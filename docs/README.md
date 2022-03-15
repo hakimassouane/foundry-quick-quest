@@ -9,7 +9,7 @@
 
 Want to play [Giffyglyph's Quick Quest](https://github.com/giffyglyph/giffyglyphs-quick-quest) in [Foundry VTT](https://foundryvtt.com/)? No worries—**Foundry Quick Quest** has you covered! Start playing a rules-lite RPG in minutes with a fully-featured character sheet, item cards, and perk system.
 
-* Install the System: https://raw.githubusercontent.com/giffyglyph/foundry-quick-quest/master/system.json
+* Install the System: https://raw.githubusercontent.com/hakimassouane/foundry-quick-quest/master/system.json
 * [Read the Changelog](https://github.com/giffyglyph/foundry-quick-quest/blob/master/docs/CHANGELOG.md) 
 
 ## Features
@@ -23,7 +23,7 @@ Want to play [Giffyglyph's Quick Quest](https://github.com/giffyglyph/giffyglyph
 ## Getting Started
 
 1. Install and activate the system.
-   * System URL: https://raw.githubusercontent.com/giffyglyph/foundry-quick-quest/master/system.json
+   * System URL: https://raw.githubusercontent.com/hakimassouane/foundry-quick-quest/master/system.json
 2. Create a new **Actor**. Customise your actor by setting the attributes and archetypes.
 4. Create a new **Resource** item. Customise it and drag it onto your actor.
 5. Create a new **Perk** item. Customise it and drag it onto your actor.

@@ -232,7 +232,15 @@ $character--inventory--border--color: $character--header--background;
                 }
             }
 
-            .resolve__maximum {
+            .resolve__maximum__value--higher {
+                color: green;
+            }
+
+            .resolve__maximum__value--lower {
+                color: red;
+            }
+
+/*             .resolve__maximum {
                 position: relative;
 
                 input {
@@ -268,7 +276,7 @@ $character--inventory--border--color: $character--header--background;
                 &.resolve__maximum__value--lower {
                     color: red;
                 }
-            }
+            } */
     
             span {
                 font-size: 12px;

@@ -22,6 +22,21 @@ export default class ActorEntity extends Actor {
 		this._applyResolveModifier(actor, modifiers["res"]);
 	}
 
+	/** @inheritdoc */
+	async modifyTokenAttribute(attribute, value, isDelta = false, isBar = true) {
+		const current = foundry.utils.getProperty(this.data.data, attribute);
+		console.log(this.data.data)
+		console.log(current)
+		console.log('attribute => ', attribute)
+		const updates = {
+			[`data.${attribute}.value`]: Math.clamped(current.value + value, current.min, current.max),
+			[`data.${attribute}.max`]: this.data.data.resolve.maximum.total
+		};
+		const allowed = Hooks.call("modifyTokenAttribute", {attribute, value, isDelta, isBar}, updates);
+		return allowed !== false ? this.update(updates) : this;
+	  }
+	
+
 	_getResources(items) {
 		let resources = {
 			items: items,
@@ -32,18 +47,18 @@ export default class ActorEntity extends Actor {
 			totalValue: 0
 		};
 		items.forEach(function(item) {
-			if (item.data.isHidden) {
+			if (item.data.data.isHidden) {
 				resources.totalHidden++;
 			} else {
 				resources.totalVisible++;
-				if (item.data.canBeEquipped && item.data.isEquipped) {
+				if (item.data.data.canBeEquipped && item.data.data.isEquipped) {
 					resources.totalEquipped++;
 				}
-				if (item.data.canHaveBulk) {
-					resources.totalBulk += Number(item.data.bulk);
+				if (item.data.data.canHaveBulk) {
+					resources.totalBulk += Number(item.data.data.bulk);
 				}
-				if (item.data.canHaveValue) {
-					resources.totalValue += Number(item.data.value);
+				if (item.data.data.canHaveValue) {
+					resources.totalValue += Number(item.data.data.value);
 				}
 			}
 		});
@@ -57,7 +72,7 @@ export default class ActorEntity extends Actor {
 			totalHidden: 0
 		};
 		items.forEach(function(item) {
-			if (item.data.isHidden) {
+			if (item.data.data.isHidden) {
 				perks.totalHidden++;
 			} else {
 				perks.totalVisible++;
@@ -86,8 +101,8 @@ export default class ActorEntity extends Actor {
 
 	_getItemModifiers(items) {
 		let modifiers = {};
-		items.filter(x => !x.data.isHidden && (x.type != "resource" || x.type == "resource" && x.data.canBeEquipped && x.data.isEquipped)).forEach(function(item) {
-			item.data.modifiers.forEach(function(modifier) {
+		items.filter(x => !x.data.data.isHidden && (x.type != "resource" || x.type == "resource" && x.data.data.canBeEquipped && x.data.data.isEquipped)).forEach(function(item) {
+			item.data.data.modifiers.forEach(function(modifier) {
 				if (!modifiers[modifier.type]) {
 					modifiers[modifier.type] = {
 						total: 0,

@@ -35,30 +35,32 @@ export default class ActorSheetCharacter extends ActorSheet {
 		event.preventDefault();
 		const resourceData = {
 			name: game.i18n.format("new.resource.title"),
-			img: DEFAULT_TOKEN,
+			img: "icons/svg/item-bag.svg",
 			type: "resource",
 			data: duplicate(event.currentTarget.dataset)
 		};
 		delete resourceData.data["type"];
-		return this.actor.createEmbeddedEntity("OwnedItem", resourceData);
+
+		const toReturn = this.actor.createEmbeddedDocuments("Item", [resourceData]);
+		return toReturn
 	}
 
 	_onPerkAdd(event) {
 		event.preventDefault();
 		const resourceData = {
 			name: game.i18n.format("new.perk.title"),
-			img: DEFAULT_TOKEN,
+			img: "icons/svg/aura.svg",
 			type: "perk",
 			data: duplicate(event.currentTarget.dataset)
 		};
 		delete resourceData.data["type"];
-		return this.actor.createEmbeddedEntity("OwnedItem", resourceData);
+		return this.actor.createEmbeddedDocuments("Item", [resourceData]);
 	}
 
 	_onResourceToggleEquipped(event) {
 		event.preventDefault();
 		const li = event.currentTarget.closest(".resource");
-		const resource = this.actor.getOwnedItem(li.dataset.itemId);
+		const resource = this.actor.getEmbeddedDocument("Item", li.dataset.itemId);
 		resource.update({
 			"data.isEquipped": !resource.data.data.isEquipped
 		});
@@ -67,7 +69,7 @@ export default class ActorSheetCharacter extends ActorSheet {
 	_onItemToggleHidden(event) {
 		event.preventDefault();
 		const li = event.currentTarget.closest(".item");
-		const item = this.actor.getOwnedItem(li.dataset.itemId);
+		const item = this.actor.getEmbeddedDocument("Item", li.dataset.itemId);
 		item.update({
 			"data.isHidden": !item.data.data.isHidden
 		});
@@ -78,7 +80,7 @@ export default class ActorSheetCharacter extends ActorSheet {
 		const field = event.currentTarget.getAttribute("data-field");
 		const value = event.currentTarget.value;
 		const li = event.currentTarget.closest(".item");
-		const item = this.actor.getOwnedItem(li.dataset.itemId);
+		const item = this.actor.getEmbeddedDocument("Item", li.dataset.itemId);
 		item.update({
 			[field]: value
 		});
@@ -87,14 +89,14 @@ export default class ActorSheetCharacter extends ActorSheet {
 	_onItemOpen(event) {
 		event.preventDefault();
 		const li = event.currentTarget.closest(".item");
-		const item = this.actor.getOwnedItem(li.dataset.itemId);
+		const item = this.actor.getEmbeddedDocument("Item", li.dataset.itemId);
 		item.sheet.render(true);
 	}
 
 	_onItemDelete(event) {
 		event.preventDefault();
 		const li = event.currentTarget.closest(".item");
-		this.actor.deleteOwnedItem(li.dataset.itemId);
+		this.actor.deleteEmbeddedDocuments("Item", [li.dataset.itemId]);
 	}
 
 	async _onMakeRoll(event) {
@@ -132,13 +134,65 @@ export default class ActorSheetCharacter extends ActorSheet {
 					rollParts.unshift("1d20");
 					break;
 			}
-			const roll = new Roll(rollParts.join(" + ")).roll();
-			roll.toMessage({
-			  speaker: ChatMessage.getSpeaker({actor: this.actor}),
-			  flavor: ActorSheetCharacter._getMessageFromParts(messageParts),
-			  messageData: {"flags.dnd5e.roll": {type: "other", itemId: this.id }},
-			  rollMode: form.mode
+			const roll = await new Roll(rollParts.join(" + ")).roll();
+			console.log(roll)
+
+			let contentDices = []
+
+			for(let i = 0; i < roll.dice[0].number; i++) {
+				if (i === 0) contentDices.push(`<ol class="dice-rolls">`)
+				contentDices.push(`<li class="roll die d20 ${roll.dice[0].results[i].discarded ? "discarded" : ""}">${roll.dice[0].results[i].result}</li>`)
+			}
+			contentDices.push(`</ol>`)
+
+			console.log(contentDices)
+
+			ChatMessage.create({
+				type: CONST.CHAT_MESSAGE_TYPES.ROLL,
+				content: `
+					<div class="dice-roll">
+						<div class="dice-result">
+						<div class="dice-formula">${roll.formula}</div>
+							<div class="dice-tooltip">
+								<section class="tooltip-part">
+									<div class="dice">
+										<header class="part-header flexrow">
+											<span class="part-formula">${roll.formula.substring(0, roll.formula.indexOf("20") + 2)}</span>
+											
+											<span class="part-total">${roll.total}</span>
+										</header>
+										${contentDices.join("")}
+									</div>
+								</section>
+							</div>
+						<h4 class="dice-total">${roll.total}</h4>
+						
+					</div>
+				</div>
+				`,
+				rollMode: form.mode,
+				roll
 			});
+
+			/* ChatMessage.create({
+				type: CONST.CHAT_MESSAGE_TYPES.ROLL,
+				content: `
+				<div class="dnd5e chat-card item-card" data-actor-id="${this.actor.id}" data-item-id="{{item.id}}">
+					<p class="item-name" style="font-family: 'Signika';">${`Jet de
+						${form.attribute ? game.i18n.format(`common.${form.attribute}.name`) : ""}
+						${form.archetype ? game.i18n.format(`common.${form.archetype}.name`) : ""}
+					`}
+					</p>
+
+				<div class="card-buttons">
+					<button style="font-family: 'Signika'; font-size: 1rem;">${roll.formula}</button>
+					<button style="font-family: 'Signika'; font-size: 1rem; font-weight: bold;">${roll.total}</button>
+				</div>
+			</div>
+				`,
+				rollMode: form.mode,
+				roll
+			}); */
 		} catch(err) {
 			console.log(err);
 			return;

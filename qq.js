@@ -5,6 +5,7 @@ import ItemSheetResource from './scripts/sheets/resource.js';
 import ItemSheetPerk from './scripts/sheets/perk.js';
 import ActorEntity from './scripts/entities/actor.js';
 import ItemEntity from './scripts/entities/item.js';
+import TokenDocumentEntity from './scripts/entities/token.js';
 
 /* -------------------------------------------- */
 /*  Foundry VTT Initialization                  */
@@ -13,8 +14,15 @@ import ItemEntity from './scripts/entities/item.js';
 Hooks.once("init", function() {
 	console.log(`Giffyglyph's Quick Quest | Initialising`);
 
-	CONFIG.Actor.entityClass = ActorEntity;
-  	CONFIG.Item.entityClass = ItemEntity;
+	game.boilerplate = {
+		ActorEntity,
+		ItemEntity,
+		TokenDocumentEntity,
+	};
+
+	CONFIG.Actor.documentClass  = ActorEntity;
+  	CONFIG.Item.documentClass  = ItemEntity;
+	CONFIG.Token.documentClass  = TokenDocumentEntity;
 
 	// Register sheet application classes
 	Actors.unregisterSheet("core", ActorSheet);
@@ -43,7 +51,34 @@ Hooks.once("init", function() {
 		return String(str).length;
 	});
 
-	preloadHandlebarsTemplates();
+	Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
+		switch (operator) {
+			case '==':
+				return (v1 == v2) ? options.fn(this) : options.inverse(this);
+			case '===':
+				return (v1 === v2) ? options.fn(this) : options.inverse(this);
+			case '!=':
+				return (v1 != v2) ? options.fn(this) : options.inverse(this);
+			case '!==':
+				return (v1 !== v2) ? options.fn(this) : options.inverse(this);
+			case '<':
+				return (v1 < v2) ? options.fn(this) : options.inverse(this);
+			case '<=':
+				return (v1 <= v2) ? options.fn(this) : options.inverse(this);
+			case '>':
+				return (v1 > v2) ? options.fn(this) : options.inverse(this);
+			case '>=':
+				return (v1 >= v2) ? options.fn(this) : options.inverse(this);
+			case '&&':
+				return (v1 && v2) ? options.fn(this) : options.inverse(this);
+			case '||':
+				return (v1 || v2) ? options.fn(this) : options.inverse(this);
+			default:
+				return options.inverse(this);
+		}
+	});
 
 	console.log(`Giffyglyph's Quick Quest | Initialised`);
+
+	return preloadHandlebarsTemplates();
 });

@@ -23,19 +23,19 @@
             <div class="character__perks">
                 <div class="field field--input">
                     <label for="perks">{{localize 'common.perks'}}</label>
-                    <input type="number" value="{{data.perks.totalVisible}}" disabled/>
+                    <input type="number" value="{{data.data.perks.totalVisible}}" disabled/>
                 </div>
             </div>
             <div class="character__ancestry">
                 <div class="field field--input">
                     <label for="data.ancestry">{{localize 'common.ancestry'}}</label>
-                    <input name="data.ancestry" type="text" value="{{data.ancestry}}" title="{{data.ancestry}}"/>
+                    <input name="data.ancestry" type="text" value="{{data.data.ancestry}}" title="{{data.ancestry}}"/>
                 </div>
             </div>
             <div class="character__calling">
                 <div class="field field--input">
                     <label for="data.calling">{{localize 'common.calling'}}</label>
-                    <input name="data.calling" type="text" value="{{data.calling}}" title="{{data.calling}}"/>
+                    <input name="data.calling" type="text" value="{{data.data.calling}}" title="{{data.calling}}"/>
                 </div>
             </div>
         </header>
@@ -47,50 +47,50 @@
                         {{> "systems/quickquest/templates/partials/character-attribute.html"
                             code="str"
                             icon="muscle-up"
-                            base=data.attributes.str.base
-                            sources=data.attributes.str.sources
-                            class=data.attributes.str.class
-                            total=data.attributes.str.total
+                            base=data.data.attributes.str.base
+                            sources=data.data.attributes.str.sources
+                            class=data.data.attributes.str.class
+                            total=data.data.attributes.str.total
                         }}
                         {{> "systems/quickquest/templates/partials/character-attribute.html"
                             code="dex"
                             icon="bullseye"
-                            base=data.attributes.dex.base
-                            sources=data.attributes.dex.sources
-                            class=data.attributes.dex.class
-                            total=data.attributes.dex.total
+                            base=data.data.attributes.dex.base
+                            sources=data.data.attributes.dex.sources
+                            class=data.data.attributes.dex.class
+                            total=data.data.attributes.dex.total
                         }}
                         {{> "systems/quickquest/templates/partials/character-attribute.html"
                             code="con"
                             icon="heart-beats"
-                            base=data.attributes.con.base
-                            sources=data.attributes.con.sources
-                            class=data.attributes.con.class
-                            total=data.attributes.con.total
+                            base=data.data.attributes.con.base
+                            sources=data.data.attributes.con.sources
+                            class=data.data.attributes.con.class
+                            total=data.data.attributes.con.total
                         }}
                         {{> "systems/quickquest/templates/partials/character-attribute.html"
                             code="int"
                             icon="brain"
-                            base=data.attributes.int.base
-                            sources=data.attributes.int.sources
-                            class=data.attributes.int.class
-                            total=data.attributes.int.total
+                            base=data.data.attributes.int.base
+                            sources=data.data.attributes.int.sources
+                            class=data.data.attributes.int.class
+                            total=data.data.attributes.int.total
                         }}
                         {{> "systems/quickquest/templates/partials/character-attribute.html"
                             code="wis"
                             icon="light-bulb"
-                            base=data.attributes.wis.base
-                            sources=data.attributes.wis.sources
-                            class=data.attributes.wis.class
-                            total=data.attributes.wis.total
+                            base=data.data.attributes.wis.base
+                            sources=data.data.attributes.wis.sources
+                            class=data.data.attributes.wis.class
+                            total=data.data.attributes.wis.total
                         }}
                         {{> "systems/quickquest/templates/partials/character-attribute.html"
                             code="cha"
                             icon="drama-masks"
-                            base=data.attributes.cha.base
-                            sources=data.attributes.cha.sources
-                            class=data.attributes.cha.class
-                            total=data.attributes.cha.total
+                            base=data.data.attributes.cha.base
+                            sources=data.data.attributes.cha.sources
+                            class=data.data.attributes.cha.class
+                            total=data.data.attributes.cha.total
                         }}
                     </section>
                 </div>
@@ -100,50 +100,50 @@
                         {{> "systems/quickquest/templates/partials/character-archetype.html"
                             code="fig"
                             icon="sharp-axe"
-                            base=data.archetypes.fig.base
-                            sources=data.archetypes.fig.sources
-                            class=data.archetypes.fig.class
-                            total=data.archetypes.fig.total
+                            base=data.data.archetypes.fig.base
+                            sources=data.data.archetypes.fig.sources
+                            class=data.data.archetypes.fig.class
+                            total=data.data.archetypes.fig.total
                         }}
                         {{> "systems/quickquest/templates/partials/character-archetype.html"
                             code="rog"
                             icon="lockpicks"
-                            base=data.archetypes.rog.base
-                            sources=data.archetypes.rog.sources
-                            class=data.archetypes.rog.class
-                            total=data.archetypes.rog.total
+                            base=data.data.archetypes.rog.base
+                            sources=data.data.archetypes.rog.sources
+                            class=data.data.archetypes.rog.class
+                            total=data.data.archetypes.rog.total
                         }}
                         {{> "systems/quickquest/templates/partials/character-archetype.html"
                             code="exp"
                             icon="treasure-map"
-                            base=data.archetypes.exp.base
-                            sources=data.archetypes.exp.sources
-                            class=data.archetypes.exp.class
-                            total=data.archetypes.exp.total
+                            base=data.data.archetypes.exp.base
+                            sources=data.data.archetypes.exp.sources
+                            class=data.data.archetypes.exp.class
+                            total=data.data.archetypes.exp.total
                         }}
                         {{> "systems/quickquest/templates/partials/character-archetype.html"
                             code="sag"
                             icon="book-cover"
-                            base=data.archetypes.sag.base
-                            sources=data.archetypes.sag.sources
-                            class=data.archetypes.sag.class
-                            total=data.archetypes.sag.total
+                            base=data.data.archetypes.sag.base
+                            sources=data.data.archetypes.sag.sources
+                            class=data.data.archetypes.sag.class
+                            total=data.data.archetypes.sag.total
                         }}
                         {{> "systems/quickquest/templates/partials/character-archetype.html"
                             code="art"
                             icon="paint-brush"
-                            base=data.archetypes.art.base
-                            sources=data.archetypes.art.sources
-                            class=data.archetypes.art.class
-                            total=data.archetypes.art.total
+                            base=data.data.archetypes.art.base
+                            sources=data.data.archetypes.art.sources
+                            class=data.data.archetypes.art.class
+                            total=data.data.archetypes.art.total
                         }}
                         {{> "systems/quickquest/templates/partials/character-archetype.html"
                             code="dip"
                             icon="conversation"
-                            base=data.archetypes.dip.base
-                            sources=data.archetypes.dip.sources
-                            class=data.archetypes.dip.class
-                            total=data.archetypes.dip.total
+                            base=data.data.archetypes.dip.base
+                            sources=data.data.archetypes.dip.sources
+                            class=data.data.archetypes.dip.class
+                            total=data.data.archetypes.dip.total
                         }}
                     </section>
                 </div>
@@ -151,12 +151,13 @@
                     <header class="fieldset__header">{{localize 'common.res.name'}}</header>
                     <section class="fieldset__body">
                         <div class="resolve__used">
-                            <input name="data.resolve.current" type="number" value="{{data.resolve.current}}" min="0" max="{{data.resolve.maximum.total}}">
+                            <input name="data.resolve.current.value" type="number" value="{{data.data.resolve.current.value}}" min="0" max="{{data.data.resolve.maximum.total}}">
+                            <span> </span>
                             <span>{{localize 'common.current'}}</span>
                         </div>
                         <div class="resolve__maximum">
-                            <input name="data.resolve.maximum.base" type="number" value="{{data.resolve.maximum.base}}" title="{{#each data.resolve.maximum.sources as | source id |}}{{localize 'sheet.character.source' value=source.value source=source.source}}{{#unless @last}},&#010;{{/unless}}{{/each}}">
-                            <span class="resolve__maximum__value resolve__maximum__value--{{data.resolve.maximum.class}}">{{data.resolve.maximum.total}}</span>
+                            <input name="data.resolve.maximum.base" type="number" value="{{data.data.resolve.maximum.base}}" title="{{#each data.data.resolve.maximum.sources as | source id |}}{{localize 'sheet.character.source' value=source.value source=source.source}}{{#unless @last}},&#010;{{/unless}}{{/each}}">
+                            <span class="resolve__maximum__value resolve__maximum__value--{{data.data.resolve.maximum.class}}">{{data.data.resolve.maximum.total}}</span>
                             <span>{{localize 'common.maximum'}}</span>
                         </div>
                     </section>
@@ -166,7 +167,7 @@
                         <label><span>{{localize 'sheet.character.appearance.title'}}</span></label>
                     </header>
                     <section class="fieldset__body">
-                        <img src="{{actor.img}}" title="{{actor.name}}" data-edit="img"/>
+                        <img class="profile" src="{{actor.img}}" title="{{actor.name}}" data-edit="img"/>
                     </section>
                 </div>
             </div>
@@ -181,9 +182,9 @@
                                 <th>{{localize 'common.actions'}}</th>
                             </thead>
                             <tbody class="items perks item-list">
-                                {{#if data.perks.items.length}}
-                                    {{#each data.perks.items as | item id |}}
-                                        <tr class="item item--rarity--{{item.data.rarity}} {{#if item.data.isHidden}}item--hidden{{/if}} perk" data-item-id="{{item._id}}">
+                                {{#if data.data.perks.items.length}}
+                                    {{#each data.data.perks.items as | item id |}}
+                                        <tr class="item item--rarity--{{item.data.data.rarity}} {{#if item.data.data.isHidden}}item--hidden{{/if}} perk" data-item-id="{{item.id}}">
                                             <td class="item__icon">
                                                 <img src="{{item.img}}"/>
                                             </td>
@@ -191,7 +192,7 @@
                                                 <input data-field="name" type="text" value="{{item.name}}" title="{{item.name}}"/>
                                             </td>
                                             <td class="perk__modifiers" title="{{#each item.data.modifiers as | modifier id |}}{{numberFormat modifier.value decimals=0 sign=true}} {{modifier.type}}{{#unless @last}}, {{/unless}}{{/each}}">
-                                                {{#each item.data.modifiers as | modifier id |}}{{numberFormat modifier.value decimals=0 sign=true}} {{modifier.type}}{{#unless @last}}, {{/unless}}{{/each}}
+                                                {{#each item.data.data.modifiers as | modifier id |}}{{numberFormat modifier.value decimals=0 sign=true}} {{modifier.type}}{{#unless @last}}, {{/unless}}{{/each}}
                                             </td>
                                             <td class="item__actions">
                                                 <button type="button" class="item__action item__action--toggle-hidden" title="{{localize 'sheet.character.items.actions.toggle.hidden'}}">
@@ -216,8 +217,8 @@
                     </section>
                     <footer class="fieldset__footer fieldset--items__controls">
                         <div class="fieldset--items__details">
-                            <div class="perks__count" title="{{localize 'common.counter.perks' count=data.perks.totalVisible}} {{#if data.perks.totalHidden}}({{localize 'common.counter.hidden' count=data.perks.totalHidden}}){{/if}}">
-                                <i class="fa fa-list"></i>{{data.perks.totalVisible}}
+                            <div class="perks__count" title="{{localize 'common.counter.perks' count=data.data.perks.totalVisible}} {{#if data.data.perks.totalHidden}}({{localize 'common.counter.hidden' count=data.data.perks.totalHidden}}){{/if}}">
+                                <i class="fa fa-list"></i>{{data.data.perks.totalVisible}}
                             </div>
                         </div>
                         <button type="button" class="item__action item__action--add" title="{{localize 'sheet.character.perks.actions.add'}}">
@@ -241,9 +242,9 @@
                                 <th>{{localize 'common.actions'}}</th>
                             </thead>
                             <tbody class="items resources item-list">
-                                {{#if data.resources.items.length}}
-                                    {{#each data.resources.items as | item id |}}
-                                        <tr class="item item--rarity--{{item.data.rarity}} {{#if item.data.isHidden}}item--hidden{{/if}} resource" data-item-id="{{item._id}}">
+                                {{#if data.data.resources.items.length}}
+                                    {{#each data.data.resources.items as | item id |}}
+                                        <tr class="item item--rarity--{{item.data.rarity}} {{#if item.data.data.isHidden}}item--hidden{{/if}} resource" data-item-id="{{item.id}}">
                                             <td class="item__icon">
                                                 <img src="{{item.img}}"/>
                                             </td>
@@ -251,29 +252,29 @@
                                                 <input data-field="name" type="text" value="{{item.name}}" title="{{item.name}}"/>
                                             </td>
                                             <td class="resource__bulk">
-                                                {{#if item.data.canHaveBulk}}
-                                                    <input data-field="data.bulk" type="number" value="{{item.data.bulk}}"/>
+                                                {{#if item.data.data.canHaveBulk}}
+                                                    <input data-field="data.bulk" type="number" value="{{item.data.data.bulk}}"/>
                                                 {{/if}}
                                             </td>
                                             <td class="resource__value">
-                                                {{#if item.data.canHaveValue}}
-                                                    <input data-field="data.value" type="number" value="{{item.data.value}}"/>
+                                                {{#if item.data.data.canHaveValue}}
+                                                    <input data-field="data.value" type="number" value="{{item.data.data.value}}"/>
                                                 {{/if}}
                                             </td>
                                             <td class="resource__charges">
-                                                {{#if item.data.canHaveCharges}}
-                                                    <input data-field="data.charges" type="number" value="{{item.data.charges}}"/>
+                                                {{#if item.data.data.canHaveCharges}}
+                                                    <input data-field="data.charges" type="number" value="{{item.data.data.charges}}"/>
                                                 {{/if}}
                                             </td>
                                             <td class="resource__equipped">
-                                                {{#if item.data.canBeEquipped}}
-                                                    <button type="button" class="item__action resource__action--toggle-equipped {{#if item.data.isEquipped}}equipped{{/if}}" title="{{localize 'sheet.character.resources.actions.toggle.equipped'}}">
+                                                {{#if item.data.data.canBeEquipped}}
+                                                    <button type="button" class="item__action resource__action--toggle-equipped {{#if item.data.data.isEquipped}}equipped{{/if}}" title="{{localize 'sheet.character.resources.actions.toggle.equipped'}}">
                                                         <i class="fas fa-shield-alt"></i>
                                                     </button>
                                                 {{/if}}
                                             </td>
                                             <td class="resource__modifiers" title="{{#each item.data.modifiers as | modifier id |}}{{numberFormat modifier.value decimals=0 sign=true}} {{modifier.type}}{{#unless @last}}, {{/unless}}{{/each}}">
-                                                {{#each item.data.modifiers as | modifier id |}}{{numberFormat modifier.value decimals=0 sign=true}} {{modifier.type}}{{#unless @last}}, {{/unless}}{{/each}}
+                                                {{#each item.data.data.modifiers as | modifier id |}}{{numberFormat modifier.value decimals=0 sign=true}} {{modifier.type}}{{#unless @last}}, {{/unless}}{{/each}}
                                             </td>
                                             <td class="item__actions">
                                                 <button type="button" class="item__action item__action--toggle-hidden" title="{{localize 'sheet.character.items.actions.toggle.hidden'}}">
@@ -298,17 +299,17 @@
                     </section>
                     <footer class="fieldset__footer fieldset--items__controls">
                         <div class="fieldset--items__details">
-                            <div class="resources__count" title="{{localize 'common.counter.resources' count=data.resources.totalVisible}} {{#if data.resources.totalHidden}}({{localize 'common.counter.hidden' count=data.resources.totalHidden}}){{/if}}">
-                                <i class="fa fa-list"></i>{{data.resources.totalVisible}}
+                            <div class="resources__count" title="{{localize 'common.counter.resources' count=data.data.resources.totalVisible}} {{#if data.data.resources.totalHidden}}({{localize 'common.counter.hidden' count=data.data.resources.totalHidden}}){{/if}}">
+                                <i class="fa fa-list"></i>{{data.data.resources.totalVisible}}
                             </div>
-                            <div class="resources__equipped" title="{{localize 'common.counter.equipped' count=data.resources.totalEquipped}}">
-                                <i class="fa fa-hand-paper"></i>{{data.resources.totalEquipped}}
+                            <div class="resources__equipped" title="{{localize 'common.counter.equipped' count=data.data.resources.totalEquipped}}">
+                                <i class="fa fa-hand-paper"></i>{{data.data.resources.totalEquipped}}
                             </div>
-                            <div class="resources__bulk" title="{{localize 'common.counter.bulk' count=data.resources.totalBulk}}">
-                                <i class="fa fa-weight-hanging"></i>{{data.resources.totalBulk}}
+                            <div class="resources__bulk" title="{{localize 'common.counter.bulk' count=data.data.resources.totalBulk}}">
+                                <i class="fa fa-weight-hanging"></i>{{data.data.resources.totalBulk}}
                             </div>
-                            <div class="resources__value" title="{{localize 'common.counter.value' count=data.resources.totalValue}}">
-                                <i class="fa fa-coins"></i>{{data.resources.totalValue}}
+                            <div class="resources__value" title="{{localize 'common.counter.value' count=data.data.resources.totalValue}}">
+                                <i class="fa fa-coins"></i>{{data.data.resources.totalValue}}
                             </div>
                         </div>
                         <button type="button" class="item__action item__action--add" title="{{localize 'sheet.character.resources.actions.add'}}">
@@ -321,7 +322,7 @@
     </form>
     <div class="sheet__footer">
         <div class="sheet__id">
-            <span class="id">{{actor._id}}</span>
+            <span class="id">{{actor.id}}</span>
             <span class="name">Quick Quest</span>
         </div>
     </div>

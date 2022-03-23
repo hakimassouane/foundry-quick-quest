@@ -1,6 +1,6 @@
 {
   "name": "foundry_gqq",
-  "version": "0.0.1",
+  "version": "1.1.6",
   "description": "",
   "main": "gulpfile.js",
   "scripts": {

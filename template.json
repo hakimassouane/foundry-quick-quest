@@ -85,6 +85,12 @@
       "templates": ["base"],
       "ancestry": null,
       "calling": null,
+      "details": {
+        "biography": {
+          "value": "",
+          "public": ""
+        }
+      },
       "resolve": {
         "current": {
           "value": 10,
@@ -96,7 +102,8 @@
           "total": 10
         }
       }
-    }
+    },
+    "htmlFields": ["details.biography.value", "details.biography.public"]
   },
   "Item": {
     "types": ["resource", "perk"],
@@ -131,7 +138,11 @@
       },
       "value": {
         "canHaveValue": true,
-        "value": 10
+        "value": 1
+      },
+      "roll": {
+        "canBeRolled": false,
+        "rollStats": []
       }
     },
     "htmlFields": ["descriptions.primary.main", "descriptions.primary.flavor", "descriptions.secondary.main", "descriptions.secondary.flavor"],

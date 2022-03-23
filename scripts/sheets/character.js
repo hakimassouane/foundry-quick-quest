@@ -17,6 +17,21 @@ export default class ActorSheetCharacter extends ActorSheet {
 		);
 	}
 
+	activeListeners() {
+		// Drag events for macros.
+		if (this.actor.owner) {
+			let handler = ev => this._onDragStart(ev);
+			// Find all items on the character sheet.
+			html.find('li.item').each((i, li) => {
+			// Ignore for the header row.
+			if (li.classList.contains("item-header")) return;
+			// Add draggable attribute and dragstart listener.
+			li.setAttribute("draggable", true);
+			li.addEventListener("dragstart", handler, false);
+			});
+		}
+	}
+
 	activateListeners(html) {
 		if (this.isEditable) {   
 			html.find('.character__resources .item__action--add').click(this._onResourceAdd.bind(this));
@@ -135,21 +150,25 @@ export default class ActorSheetCharacter extends ActorSheet {
 					break;
 			}
 			const roll = await new Roll(rollParts.join(" + ")).roll();
-			console.log(roll)
-
 			let contentDices = []
 
 			for(let i = 0; i < roll.dice[0].number; i++) {
 				if (i === 0) contentDices.push(`<ol class="dice-rolls">`)
-				contentDices.push(`<li class="roll die d20 ${roll.dice[0].results[i].discarded ? "discarded" : ""}">${roll.dice[0].results[i].result}</li>`)
+				contentDices.push(`<li class="roll die d20 ${roll.dice[0].results[i].result === 1 ? "min" : ""} ${roll.dice[0].results[i].result === 20 ? "max" : ""} ${roll.dice[0].results[i].discarded ? "discarded" : ""}">${roll.dice[0].results[i].result}</li>`)
 			}
 			contentDices.push(`</ol>`)
 
-			console.log(contentDices)
-
 			ChatMessage.create({
 				type: CONST.CHAT_MESSAGE_TYPES.ROLL,
+				speaker: ChatMessage.getSpeaker(),
 				content: `
+				<div>
+					<div style="display: flex; align-items:center; margin-bottom: 0.5rem;">
+						<img src="${ChatMessage.getSpeakerActor(ChatMessage.getSpeaker()).img}" width="36" height="36">
+						<p class="item-name" style="margin: 0.5rem 0.3rem;">
+							Jet de ${messageParts.attribute || ""} ${messageParts.archetype || ""} ${messageParts.advantage ? "(" + messageParts.advantage + ")" : ""}
+						</p>
+					</div>
 					<div class="dice-roll">
 						<div class="dice-result">
 						<div class="dice-formula">${roll.formula}</div>
@@ -165,34 +184,13 @@ export default class ActorSheetCharacter extends ActorSheet {
 									</div>
 								</section>
 							</div>
-						<h4 class="dice-total">${roll.total}</h4>
-						
+						<h4 class="dice-total" style="${roll.result.substr(0, roll.result.indexOf(' ')) === "1" ? "color: red" : ""} ${roll.result.substr(0, roll.result.indexOf(' ')) === "20" ? "color: green" : ""}">${roll.total}</h4>
 					</div>
 				</div>
 				`,
 				rollMode: form.mode,
 				roll
 			});
-
-			/* ChatMessage.create({
-				type: CONST.CHAT_MESSAGE_TYPES.ROLL,
-				content: `
-				<div class="dnd5e chat-card item-card" data-actor-id="${this.actor.id}" data-item-id="{{item.id}}">
-					<p class="item-name" style="font-family: 'Signika';">${`Jet de
-						${form.attribute ? game.i18n.format(`common.${form.attribute}.name`) : ""}
-						${form.archetype ? game.i18n.format(`common.${form.archetype}.name`) : ""}
-					`}
-					</p>
-
-				<div class="card-buttons">
-					<button style="font-family: 'Signika'; font-size: 1rem;">${roll.formula}</button>
-					<button style="font-family: 'Signika'; font-size: 1rem; font-weight: bold;">${roll.total}</button>
-				</div>
-			</div>
-				`,
-				rollMode: form.mode,
-				roll
-			}); */
 		} catch(err) {
 			console.log(err);
 			return;

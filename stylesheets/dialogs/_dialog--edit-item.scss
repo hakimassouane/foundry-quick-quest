@@ -70,8 +70,15 @@
         }
     }
 
+    .rollStats {
+        select {
+            border: 1px solid #c9c9c9;
+        }
+    }
+
     button[data-action="add-tag"],
-    button[data-action="add-modifier"] {
+    button[data-action="add-modifier"],
+    button[data-action="add-stats-to-roll"] {
         background: none;
         border: 2px solid darken($dialog--tabs--background, 10%);
         color: darken($dialog--tabs--background, 20%);

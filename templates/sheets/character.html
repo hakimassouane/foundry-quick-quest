@@ -10,6 +10,7 @@
                 <a class="item active" data-tab="aspects">{{localize 'sheet.character.nav.aspects'}}</a>
                 <a class="item" data-tab="perks">{{localize 'sheet.character.nav.perks'}}</a>
                 <a class="item" data-tab="resources">{{localize 'sheet.character.nav.resources'}}</a>
+                <a class="item" data-tab="journal">{{localize 'sheet.character.nav.journal'}}</a>
             </div>
             <button type="button" class="character-action--roll"><i class="fas fa-dice-d20"></i><span>Roll</span></button>
         </nav>
@@ -244,7 +245,7 @@
                             <tbody class="items resources item-list">
                                 {{#if data.data.resources.items.length}}
                                     {{#each data.data.resources.items as | item id |}}
-                                        <tr class="item item--rarity--{{item.data.rarity}} {{#if item.data.data.isHidden}}item--hidden{{/if}} resource" data-item-id="{{item.id}}">
+                                        <tr class="item item--rarity--{{item.data.data.rarity}} {{#if item.data.data.isHidden}}item--hidden{{/if}} resource" data-item-id="{{item.id}}">
                                             <td class="item__icon">
                                                 <img src="{{item.img}}"/>
                                             </td>
@@ -316,6 +317,14 @@
                             <i class="fas fa-plus-circle"></i> {{localize 'sheet.character.resources.actions.add'}}
                         </button>
                     </footer>
+                </div>
+            </div>
+            <div class="tab tab--journal" data-group="primary" data-tab="journal">
+                <div class="fieldset fieldset--items character__journal">
+                    <h2>Journal</h2>
+                    <section class="fieldset__body" style="font-family: 'Source Sans Pro';">
+                            {{editor content=data.data.details.biography.value target="data.details.biography.value" button=true owner=owner editable=editable rollData=rollData}}
+                    </section>
                 </div>
             </div>
         </div>

@@ -28,11 +28,13 @@ export default class EditPerkDialog extends Dialog {
 	/** @override */
 	activateListeners(html) {
 		super.activateListeners(html);
-		html.find('[data-action="set-icon"]').click(ev => EditItem._onEditIcon(ev));
+		html.find('[data-action="set-icon"]').click(ev => EditItem._onEditIcon(ev, this.item));
 		html.find('[data-action="add-tag"]').click(ev => EditItem._onAddTag(html));
 		html.find('[data-action="add-modifier"]').click(ev => EditItem._onAddModifier(html));
+		html.find('[data-action="add-stats-to-roll"]').click(ev => EditItem._onAddStatsToRoll(html));
 		html.find('.tags').click(ev => EditItem._onClickTags(ev));
 		html.find('.modifiers').click(ev => EditItem._onClickModifiers(ev));
+		html.find('.rollStats').click(ev => EditItem._onClickStatsToRoll(ev));
 		const tabs = new Tabs({
 			navSelector: ".dialog__tabs__nav",
 			contentSelector: ".dialog__tabs__body",
@@ -62,12 +64,14 @@ export default class EditPerkDialog extends Dialog {
 								"name": form.querySelector("[name='name']").value,
 								"img": form.querySelector("[name='img']").value,
 								"data.rarity": form.querySelector("[name='data.rarity']").value,
+								"data.canBeRolled": form.querySelector("[name='data.canBeRolled']").checked,
 								"data.descriptions.primary.main": form.querySelector("[name='data.descriptions.primary.main']").value,
 								"data.descriptions.primary.flavor": form.querySelector("[name='data.descriptions.primary.flavor']").value,
 								"data.descriptions.secondary.main": form.querySelector("[name='data.descriptions.secondary.main']").value,
 								"data.descriptions.secondary.flavor": form.querySelector("[name='data.descriptions.secondary.flavor']").value,
 								"data.tags": EditItem._getTags(form),
-								"data.modifiers": EditItem._getModifiers(form)
+								"data.modifiers": EditItem._getModifiers(form),
+								"data.rollStats": EditItem._getRollStats(form)
 							};
 							resolve(output);
 						}

@@ -53,6 +53,8 @@
     "common.equipped.long": "Equipé",
     "common.unequipped": "Non équipé",
     "common.equippable": "Equippable",
+    "common.rollable": "Rollable",
+    "common.rollingAttributesAndArchetype": "Stats à roll",
     "common.rarity": "Rareté",
     "common.rarities.common": "Commun",
     "common.rarities.uncommon": "Peu commun",
@@ -81,6 +83,7 @@
     "sheet.character.nav.aspects": "Aspects",
     "sheet.character.nav.resources": "Inventaire",
     "sheet.character.nav.perks": "Talents",
+    "sheet.character.nav.journal": "Journal",
     "sheet.character.appearance.title": "Apparence",
     "sheet.character.items.actions.inspect": "Details",
     "sheet.character.items.actions.delete": "Supprimer",
@@ -104,6 +107,7 @@
 
     "dialog.edit_item.add_tag": "Ajouter un tag",
     "dialog.edit_item.add_modifier": "Ajouter un modificateur",
+    "dialog.edit_item.add_stats_to_roll": "Ajouter une stat à roll",
 
     "dialog.edit_resource.title": "Editer l'objet",
     "dialog.edit_resource.tab.core": "Core",

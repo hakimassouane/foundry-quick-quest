@@ -25,9 +25,6 @@ export default class ActorEntity extends Actor {
 	/** @inheritdoc */
 	async modifyTokenAttribute(attribute, value, isDelta = false, isBar = true) {
 		const current = foundry.utils.getProperty(this.data.data, attribute);
-		console.log(this.data.data)
-		console.log(current)
-		console.log('attribute => ', attribute)
 		const updates = {
 			[`data.${attribute}.value`]: Math.clamped(current.value + value, current.min, current.max),
 			[`data.${attribute}.max`]: this.data.data.resolve.maximum.total

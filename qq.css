@@ -1098,8 +1098,12 @@
 .gqq-dialog--edit-item .modifiers select {
   flex-grow: 1; }
 
+.gqq-dialog--edit-item .rollStats select {
+  border: 1px solid #c9c9c9; }
+
 .gqq-dialog--edit-item button[data-action="add-tag"],
-.gqq-dialog--edit-item button[data-action="add-modifier"] {
+.gqq-dialog--edit-item button[data-action="add-modifier"],
+.gqq-dialog--edit-item button[data-action="add-stats-to-roll"] {
   background: none;
   border: 2px solid #c9c9c9;
   color: #afafaf;

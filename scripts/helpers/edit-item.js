@@ -95,17 +95,57 @@ export default class EditItem {
       	`);
 	}
 
-	static _onEditIcon(e) {
+	static _onClickStatsToRoll(e) {
+		let button = e.target.closest("button");
+		if (button) {
+			let action = button.getAttribute("data-action");
+			let row = button.closest(".input-group");
+			switch (action) {
+				case "delete-stats-to-roll":
+					row.remove();
+					break;
+			}
+		}
+	}
+
+	static _onAddStatsToRoll(html) {
+        let rollStats = html.find('.rollStats')[0];
+		rollStats.insertAdjacentHTML('beforeend', `
+			<div class="input-group">
+				<select name="data.rollStats[].type">
+					<optgroup label="${game.i18n.localize("common.attributes")}">
+						<option value="str">${game.i18n.localize("common.str.code")}</option>
+						<option value="dex">${game.i18n.localize("common.dex.code")}</option>
+						<option value="con">${game.i18n.localize("common.con.code")}</option>
+						<option value="int">${game.i18n.localize("common.int.code")}</option>
+						<option value="wis">${game.i18n.localize("common.wis.code")}</option>
+						<option value="cha">${game.i18n.localize("common.cha.code")}</option>
+					</optgroup>
+					<optgroup label="${game.i18n.localize("common.archetypes")}">
+						<option value="fig">${game.i18n.localize("common.fig.code")}</option>
+						<option value="rog">${game.i18n.localize("common.rog.code")}</option>
+						<option value="exp">${game.i18n.localize("common.exp.code")}</option>
+						<option value="sag">${game.i18n.localize("common.sag.code")}</option>
+						<option value="art">${game.i18n.localize("common.art.code")}</option>
+						<option value="dip">${game.i18n.localize("common.dip.code")}</option>
+					</optgroup>
+					</select>
+					<div class="input-group-append">
+                        <button type="button" data-action="delete-stats-to-roll"><i class="fas fa-trash"></i></button>
+                    </div>
+			</div>
+      	`);
+	}
+
+	static _onEditIcon(e, item) {
 		new FilePicker({
 			type: "image",
-			current: this.item.img,
+			current: item.img,
 			callback: path => {
 				e.currentTarget.src = path;
 				e.currentTarget.closest(".image__icon").querySelector("input[type='hidden']").value = path;
 			},
-			top: this.position.top + 40,
-			left: this.position.left + 10
-		}).browse(this.item.img);
+		}).browse(item.img);
 	}
 
     static _getTags(html) {
@@ -131,5 +171,18 @@ export default class EditItem {
             }
         });
         return modifiers;
+    }
+
+	static _getRollStats(html) {
+        let rollStats = [];
+        html.querySelectorAll(".rollStats > div").forEach(function(row) {
+            let type = row.querySelector("[name='data.rollStats[].type']").value;
+            if (type != "") {
+                rollStats.push({
+                    "type": type
+                });
+            }
+        });
+        return rollStats;
     }
 }

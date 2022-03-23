@@ -2,7 +2,7 @@
   "name": "quickquest",
   "title": "Giffyglyph's Quick Quest",
   "description": "Fast rpg rules in the Foundry Virtual Tabletop environment.",
-  "version": "1.0.0",
+  "version": "1.1.5",
   "author": "Giffyglyph",
   "scripts": [],
   "esmodules": ["qq.js"],
@@ -42,9 +42,9 @@
   "gridUnits": "ft",
   "primaryTokenAttribute": "resolve",
   "secondaryTokenAttribute": null,
-  "minimumCoreVersion": "0.8.9",
+  "minimumCoreVersion": "9",
   "compatibleCoreVersion": "9",
   "url": "https://patreon.com/giffyglyph",
   "manifest": "https://raw.githubusercontent.com/hakimassouane/foundry-quick-quest/master/system.json",
-  "download": "https://github.com/hakimassouane/foundry-quick-quest/archive/refs/tags/v1.1.0.zip"
+  "download": "https://github.com/hakimassouane/foundry-quick-quest/archive/refs/tags/v1.1.5.zip"
 }

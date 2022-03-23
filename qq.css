@@ -1130,6 +1130,12 @@
     flex-grow: 1;
     resize: none; }
 
+.gqq-sheet--character .editor {
+  height: 100%; }
+
+.gqq-sheet--character .editor-content {
+  height: 100%; }
+
 .gqq-sheet--character .character {
   display: grid;
   grid-template-columns: 11rem 1fr;

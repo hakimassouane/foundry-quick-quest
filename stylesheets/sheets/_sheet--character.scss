@@ -11,6 +11,14 @@ $character--inventory--border--color: $character--header--background;
 
 .gqq-sheet--character {
 
+    .editor {
+        height: 100%;
+    }
+
+    .editor-content {
+        height: 100%
+    }
+
     .character {
         display: grid;
         grid-template-columns: 11rem 1fr;

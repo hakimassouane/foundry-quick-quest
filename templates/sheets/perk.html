@@ -1,4 +1,4 @@
-<div class="gqq-card gqq-card--rarity--{{data.rarity}} gqq-card--perk {{cssClass}}">
+<div class="gqq-card gqq-card--rarity--{{data.data.rarity}} gqq-card--perk {{cssClass}}">
     <form class="card__body" autocomplete="off">
         <div class="card__title" title="{{item.name}}">{{item.name}}</div>
         <div class="card__rarity" title="{{localize (concat 'common.rarities.' data.rarity)}}">
@@ -27,7 +27,7 @@
                         <div class="perk__modifiers">
                             {{#each data.data.modifiers as | modifier id |}}
                                 <span class="perk__modifier">
-                                    {{numberFormat modifier.value decimals=0 sign=true}} {{modifier.type}}
+                                    {{numberFormat modifier.value decimals=0 sign=true}} {{modifier.name}}
                                 </span>
                             {{/each}}
                         </div>

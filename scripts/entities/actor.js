@@ -109,7 +109,8 @@ export default class ActorEntity extends Actor {
 				modifiers[modifier.type].total += Number(modifier.value);
 				modifiers[modifier.type].sources.push({
 					value: (modifier.value > 0 ? `+${modifier.value}` : modifier.value),
-					source: item.name
+					source: item.name,
+					name: game.i18n.localize(`common.${modifier.type}.code`)
 				});
 			});
 		});

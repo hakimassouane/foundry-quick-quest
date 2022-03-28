@@ -34,8 +34,7 @@ export default class ItemEntity extends Item {
         const itemData = item.data;
         let contentDices = []
         let rollFormula = ""
-
-        console.log("event is => ", event)
+        let rolledStats = []
 
         if (event.altKey) {
             rollFormula = "2d20kh"
@@ -46,6 +45,7 @@ export default class ItemEntity extends Item {
         }
         
         item.data.rollStats.forEach((rollStat) => {
+            rolledStats.push(game.i18n.localize(`common.${rollStat.type}.name`))
             if (actorData.attributes[rollStat.type]) {
                 rollFormula = rollFormula + ` + ${actorData.attributes[rollStat.type].total}`
             } else {
@@ -68,7 +68,7 @@ export default class ItemEntity extends Item {
                 <div style="display: flex; align-items:center; margin-bottom: 0.5rem;">
                     <img src="${item.img}" width="36" height="36">
                     <p class="item-name" style="margin: 0.5rem 0.3rem;">
-						${item.name} ${event.altKey ? "(Avantage)" : event.ctrlKey ? "(Désavantage)" : ""}
+						${item.name} (${rolledStats.join(' | ')}${event.altKey ? " | Avantage" : event.ctrlKey ? " | Désavantage" : ""}) 
 					</p>
                 </div>
                 <div class="dice-roll">

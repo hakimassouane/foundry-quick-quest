@@ -1,4 +1,4 @@
-<div class="gqq-card gqq-card--rarity--{{data.rarity}} gqq-card--resource {{cssClass}}">
+<div class="gqq-card gqq-card--rarity--{{data.data.rarity}} gqq-card--resource {{cssClass}}">
     <form class="card__body" autocomplete="off">
         <div class="card__title" title="{{item.name}}">{{item.name}}</div>
         <div class="card__rarity" title="{{localize (concat 'common.rarities.' data.rarity)}}">
@@ -32,7 +32,7 @@
                         <div class="resource__modifiers">
                             {{#each data.data.modifiers as | modifier id |}}
                                 <span class="resource__modifier">
-                                    {{numberFormat modifier.value decimals=0 sign=true}} {{modifier.type}}
+                                    {{numberFormat modifier.value decimals=0 sign=true}} {{modifier.name}}
                                 </span>
                             {{/each}}
                         </div>

@@ -166,7 +166,8 @@ export default class EditItem {
             if (modifier != "" && type != "") {
                 modifiers.push({
                     "value": modifier,
-                    "type": type
+                    "type": type,
+					"name": game.i18n.localize(`common.${type}.code`)
                 });
             }
         });

@@ -46,17 +46,17 @@
                     {{#if data.data.showExtras}}
                         <div class="resource__extras">
                             {{#if data.data.canHaveBulk}}
-                                <div class="resource__extra resource__extra--bulk length-{{strlen data.bulk}}" title="Bulk: {{data.bulk}}">
+                                <div class="resource__extra resource__extra--bulk length-{{strlen data.data.bulk}}" title="Poids: {{data.data.bulk}}">
                                     <span class="extra__icon"><i class="fa fa-fw fa-weight-hanging"></i></span>
                                     <span class="extra__value">{{#if data.data.bulk}}{{data.data.bulk}}{{else}}0{{/if}}</span>
-                                    <input class="extra__input" type="number" name="data.bulk" value="{{data.bulk}}"/>
+                                    <input class="extra__input" type="number" name="data.data.bulk" value="{{data.data.bulk}}"/>
                                 </div>
                             {{/if}}
                             {{#if data.data.canHaveValue}}
-                                <div class="resource__extra resource__extra--value length-{{strlen data.value}}" title="Value: {{data.value}}">
+                                <div class="resource__extra resource__extra--value length-{{strlen data.data.value}}" title="Valeur: {{data.data.value}}">
                                     <span class="extra__icon"><i class="fa fa-fw fa-coins"></i></span>
-                                    <span class="extra__value">{{#if data.value}}{{data.value}}{{else}}0{{/if}}</span>
-                                    <input class="extra__input" type="number" name="data.value" value="{{data.value}}"/>
+                                    <span class="extra__value">{{#if data.data.value}}{{data.data.value}}{{else}}0{{/if}}</span>
+                                    <input class="extra__input" type="number" name="data.data.value" value="{{data.data.value}}"/>
                                 </div>
                             {{/if}}
                             {{#if data.data.canHaveCharges}}

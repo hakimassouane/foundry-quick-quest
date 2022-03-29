@@ -20,15 +20,16 @@ export default class ItemSheetResource extends ItemSheet {
 	/** @override */
     getData() {
         const data = super.getData();
-        data.item.data.showExtras = data.item.data.canHaveQuantity || data.item.data.canHaveBulk || data.item.data.canHaveValue;
-		data.item.data.extrasCount = data.item.data.canHaveQuantity + data.item.data.canHaveBulk + data.item.data.canHaveValue;
-        return data;
+		data.data.data.showExtras = data.data.data.canHaveCharges || data.data.data.canHaveBulk || data.data.data.canHaveValue;
+		data.data.data.extrasCount = data.data.data.canHaveCharges + data.data.data.canHaveBulk + data.data.data.canHaveValue;
+        
+		return data;
     }
 
 	activateListeners(html) {
 		html.find('button[data-action="edit"]').click(this._onResourceEdit.bind(this));
 		html.find('.resource__equipped').click(ev => this._onToggleEquipped(ev));
-		html.find('.resource__extra--quantity input').change(ev => this._onUpdateQuantity(ev.target.value));
+		html.find('.resource__extra--charges input').change(ev => this._onUpdateCharges(ev.target.value));
 		html.find('.resource__extra--value input').change(ev => this._onUpdateValue(ev.target.value));
 		html.find('.resource__extra--bulk input').change(ev => this._onUpdateBulk(ev.target.value));
 		super.activateListeners(html);
@@ -40,9 +41,9 @@ export default class ItemSheetResource extends ItemSheet {
 		});
 	}
 
-	_onUpdateQuantity(quantity) {
+	_onUpdateCharges(charges) {
 		this.item.update({
-			"data.quantity": quantity
+			"data.charges": charges
 		});
 	}
 
